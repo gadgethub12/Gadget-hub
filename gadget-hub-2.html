@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gadget Hub - Your Tech Destination</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --primary: #f97316;
+    --primary-dark: #ea580c;
+    --secondary: #1e293b;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray: #94a3b8;
+    --border: #e2e8f0;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background: #f1f5f9;
+    color: var(--text);
+  }
+
+  /* TOP BAR */
+  .top-bar {
+    background: var(--dark);
+    color: #cbd5e1;
+    font-size: 12px;
+    padding: 6px 0;
+  }
+  .top-bar .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-bar a { color: #cbd5e1; text-decoration: none; margin-left: 16px; }
+  .top-bar a:hover { color: var(--primary); }
+  .top-bar-left span { margin-right: 16px; }
+  .top-bar-left i { color: var(--primary); margin-right: 4px; }
+
+  /* HEADER */
+  header {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .header-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .logo-icon {
+    width: 42px; height: 42px;
+    background: var(--primary);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 20px;
+  }
+  .logo-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .logo-text span { color: var(--primary); }
+  .logo-sub { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; }
+
+  /* SEARCH */
+  .search-bar {
+    flex: 1;
+    display: flex;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .search-bar:focus-within { border-color: var(--primary); }
+  .search-select {
+    border: none; outline: none;
+    padding: 0 12px;
+    background: #f8fafc;
+    color: var(--text);
+    font-size: 13px;
+    border-right: 1px solid var(--border);
+    cursor: pointer;
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+  .search-input {
+    flex: 1; border: none; outline: none;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: 'Hind Siliguri', sans-serif;
+  }
+  .search-btn {
+    background: var(--primary);
+    border: none; color: white;
+    padding: 0 20px; cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s;
+  }
+  .search-btn:hover { background: var(--primary-dark); }
+
+  /* HEADER ACTIONS */
+  .header-actions {
+    display: flex; gap: 8px; flex-shrink: 0;
+  }
+  .action-btn {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px; padding: 8px 14px;
+    border-radius: 8px; cursor: pointer;
+    text-decoration: none; color: var(--text);
+    transition: background 0.2s;
+    position: relative;
+  }
+  .action-btn:hover { background: #f1f5f9; color: var(--primary); }
+  .action-btn i { font-size: 20px; }
+  .action-btn span { font-size: 11px; font-weight: 500; }
+  .badge {
+    position: absolute; top: 4px; right: 8px;
+    background: var(--primary); color: white;
+    font-size: 10px; font-weight: 700;
+    width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--secondary);
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .nav-all-cats {
+    background: var(--primary);
+    color: white;
+    padding: 13px 20px;
+    display: flex; align-items: center; gap: 10px;
+    cursor: pointer; font-weight: 600;
+    font-size: 14px; white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .nav-all-cats:hover { background: var(--primary-dark); }
+  .nav-links {
+    display: flex; flex: 1;
+  }
+  .nav-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 13px 16px;
+    font-size: 13px; font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .nav-link:hover { color: white; background: rgba(255,255,255,0.08); }
+  .nav-link.hot { color: #fbbf24; }
+  .nav-link.new { color: #34d399; }
+  .nav-hotline {
+    margin-left: auto;
+    color: #cbd5e1;
+    font-size: 13px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-hotline i { color: var(--primary); font-size: 16px; }
+  .nav-hotline strong { color: white; }
+
+  /* CONTAINER */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* HERO SLIDER */
+  .hero-section {
+    padding: 16px 0;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 16px;
+  }
+  .hero-slider {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 380px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+  }
+  .slide {
+    display: none;
+    position: absolute; inset: 0;
+    padding: 50px;
+    color: white;
+    animation: fadeIn 0.5s;
+  }
+  .slide.active { display: flex; flex-direction: column; justify-content: center; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+  .slide-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: white; font-size: 11px; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px;
+    letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 14px; width: fit-content;
+  }
+  .slide h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 40px; font-weight: 700; line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .slide h1 span { color: var(--primary); }
+  .slide p { color: #94a3b8; font-size: 15px; margin-bottom: 24px; max-width: 400px; }
+  .slide-price { font-size: 13px; color: #94a3b8; margin-bottom: 6px; }
+  .slide-price strong { font-size: 28px; color: white; font-family: 'Rajdhani', sans-serif; }
+  .slide-price del { font-size: 15px; color: #64748b; margin-left: 8px; }
+  .slide-actions { display: flex; gap: 12px; margin-top: 10px; }
+  .btn-primary {
+    background: var(--primary); color: white;
+    padding: 11px 24px; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.2s; border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 11px 24px; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.2s; cursor: pointer;
+  }
+  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+  .slide-img {
+    position: absolute; right: 30px; bottom: 20px;
+    width: 280px; height: 320px;
+    object-fit: contain; opacity: 0.9;
+  }
+  .slider-dots {
+    position: absolute; bottom: 16px; left: 50px;
+    display: flex; gap: 8px;
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.3); cursor: pointer;
+    transition: all 0.2s;
+  }
+  .dot.active { background: var(--primary); width: 24px; border-radius: 4px; }
+  .slider-arrows {
+    position: absolute; right: 16px; top: 16px;
+    display: flex; gap: 8px;
+  }
+  .slider-arr {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); color: white;
+    border: none; cursor: pointer; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .slider-arr:hover { background: var(--primary); }
+
+  /* SIDE BANNERS */
+  .side-banners { display: flex; flex-direction: column; gap: 12px; }
+  .side-banner {
+    border-radius: 10px; overflow: hidden;
+    height: 184px; position: relative;
+    display: flex; align-items: flex-end;
+    padding: 16px; color: white;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .side-banner:hover { transform: scale(1.01); }
+  .side-banner::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 70%);
+  }
+  .sb1 { background: linear-gradient(135deg, #1e3a5f, #0f4c75); }
+  .sb2 { background: linear-gradient(135deg, #1a1a2e, #16213e); }
+  .side-banner-content { position: relative; z-index: 1; }
+  .side-banner-content p { font-size: 11px; color: #94a3b8; margin-bottom: 2px; }
+  .side-banner-content h3 { font-size: 16px; font-weight: 700; font-family: 'Rajdhani', sans-serif; }
+  .side-banner-content .price { color: var(--primary); font-weight: 700; font-size: 18px; font-family: 'Rajdhani', sans-serif; }
+
+  /* FEATURES */
+  .features {
+    background: white;
+    border-top: 3px solid var(--primary);
+    margin: 16px 0;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    divide-x: 1px solid var(--border);
+  }
+  .feature-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 24px;
+    border-right: 1px solid var(--border);
+  }
+  .feature-item:last-child { border-right: none; }
+  .feature-icon {
+    width: 44px; height: 44px;
+    background: #fff7ed;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: var(--primary); flex-shrink: 0;
+  }
+  .feature-text h4 { font-size: 14px; font-weight: 600; }
+  .feature-text p { font-size: 12px; color: var(--text-muted); }
+
+  /* SECTION HEADERS */
+  .section-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px; padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-head h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px; font-weight: 700;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-head h2::before {
+    content: '';
+    width: 4px; height: 22px;
+    background: var(--primary); border-radius: 2px;
+    display: inline-block;
+  }
+  .see-all {
+    color: var(--primary); text-decoration: none;
+    font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; gap: 5px;
+    transition: gap 0.2s;
+  }
+  .see-all:hover { gap: 8px; }
+
+  /* CATEGORY ICONS */
+  .categories-section { padding: 20px 0; }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+  }
+  .cat-item {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; padding: 14px 8px;
+    background: white; border-radius: 10px;
+    text-decoration: none; color: var(--text);
+    border: 2px solid transparent;
+    transition: all 0.2s; cursor: pointer;
+    text-align: center;
+  }
+  .cat-item:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(249,115,22,0.15); }
+  .cat-item i { font-size: 24px; color: var(--primary); }
+  .cat-item span { font-size: 11px; font-weight: 600; line-height: 1.3; }
+
+  /* PRODUCTS GRID */
+  .products-section { padding: 20px 0; }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .product-card {
+    background: white; border-radius: 10px;
+    overflow: hidden; border: 1px solid var(--border);
+    transition: all 0.25s; position: relative;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(249,115,22,0.12);
+  }
+  .product-card:hover .product-actions { opacity: 1; transform: translateY(0); }
+  .product-badge {
+    position: absolute; top: 10px; left: 10px;
+    padding: 3px 8px; border-radius: 4px;
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    z-index: 2;
+  }
+  .badge-sale { background: var(--danger); color: white; }
+  .badge-new { background: var(--success); color: white; }
+  .badge-hot { background: var(--primary); color: white; }
+  .badge-stock { background: #8b5cf6; color: white; }
+  .wishlist-btn {
+    position: absolute; top: 10px; right: 10px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: white; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gray); cursor: pointer;
+    font-size: 14px; z-index: 2;
+    transition: all 0.2s;
+  }
+  .wishlist-btn:hover { background: #fee2e2; color: var(--danger); border-color: var(--danger); }
+  .product-img {
+    width: 100%; height: 180px;
+    object-fit: contain; padding: 16px;
+    background: #fafafa;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 60px;
+  }
+  .product-actions {
+    position: absolute; bottom: 140px; left: 0; right: 0;
+    display: flex; gap: 0; opacity: 0;
+    transform: translateY(10px); transition: all 0.2s;
+    z-index: 3;
+  }
+  .quick-view, .compare-btn {
+    flex: 1; padding: 8px;
+    background: rgba(15,23,42,0.85); color: white;
+    border: none; cursor: pointer; font-size: 12px;
+    font-family: 'Hind Siliguri', sans-serif;
+    transition: background 0.2s;
+  }
+  .quick-view:hover { background: var(--primary); }
+  .compare-btn:hover { background: var(--secondary); }
+  .product-info { padding: 12px; }
+  .product-brand { font-size: 11px; color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .product-name {
+    font-size: 13px; font-weight: 500; line-height: 1.4;
+    margin-bottom: 8px; color: var(--text);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; height: 36px;
+  }
+  .product-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+  .stars { color: #f59e0b; font-size: 11px; }
+  .rating-count { font-size: 11px; color: var(--text-muted); }
+  .product-price { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .price-current { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; color: var(--primary); }
+  .price-old { font-size: 13px; color: var(--gray); text-decoration: line-through; }
+  .price-save { font-size: 10px; background: #fef2f2; color: var(--danger); padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+  .add-to-cart {
+    width: 100%; padding: 9px;
+    background: var(--secondary); color: white;
+    border: none; border-radius: 7px; cursor: pointer;
+    font-size: 13px; font-weight: 600;
+    font-family: 'Hind Siliguri', sans-serif;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .add-to-cart:hover { background: var(--primary); }
+
+  /* FLASH DEALS */
+  .flash-section { padding: 20px 0; }
+  .flash-header {
+    background: linear-gradient(135deg, var(--dark), var(--secondary));
+    border-radius: 10px 10px 0 0;
+    padding: 14px 20px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .flash-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px; font-weight: 700;
+    color: white; display: flex; align-items: center; gap: 10px;
+  }
+  .flash-title i { color: var(--primary); }
+  .countdown {
+    display: flex; gap: 8px; margin-left: auto;
+  }
+  .countdown-item {
+    background: var(--primary); color: white;
+    padding: 4px 10px; border-radius: 6px;
+    text-align: center;
+  }
+  .countdown-item .num {
+    display: block; font-family: 'Rajdhani', sans-serif;
+    font-size: 20px; font-weight: 700; line-height: 1;
+  }
+  .countdown-item .lbl { font-size: 10px; opacity: 0.8; }
+  .flash-body {
+    background: white; border-radius: 0 0 10px 10px;
+    padding: 16px; border: 1px solid var(--border); border-top: none;
+  }
+  .flash-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+  }
+  .flash-card {
+    border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden; transition: all 0.2s;
+    cursor: pointer;
+  }
+  .flash-card:hover { border-color: var(--primary); box-shadow: 0 4px 15px rgba(249,115,22,0.1); }
+  .flash-img {
+    height: 140px; background: #fafafa;
+    display: flex; align-items: center; justify-content: center; font-size: 50px;
+    padding: 12px; position: relative;
+  }
+  .flash-disc {
+    position: absolute; top: 8px; right: 8px;
+    background: var(--danger); color: white;
+    font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 4px;
+  }
+  .flash-info { padding: 10px; }
+  .flash-info .name { font-size: 12px; margin-bottom: 6px; color: var(--text); font-weight: 500; }
+  .flash-info .price { font-family: 'Rajdhani', sans-serif; font-size: 18px; font-weight: 700; color: var(--primary); }
+  .flash-info .old { font-size: 12px; color: var(--gray); text-decoration: line-through; }
+  .progress-bar { margin-top: 8px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted); margin-bottom: 3px; }
+  .progress-track { height: 5px; background: #e2e8f0; border-radius: 3px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--primary); border-radius: 3px; }
+
+  /* BRANDS */
+  .brands-section { padding: 20px 0; }
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 12px;
+  }
+  .brand-card {
+    background: white; border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 16px 12px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.2s;
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--text-muted); letter-spacing: 1px;
+    height: 60px;
+  }
+  .brand-card:hover { border-color: var(--primary); color: var(--primary); box-shadow: 0 4px 12px rgba(249,115,22,0.1); }
+
+  /* LAYOUT WITH SIDEBAR */
+  .with-sidebar {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 16px;
+  }
+  .sidebar-cats {
+    background: white; border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden; height: fit-content;
+  }
+  .sidebar-cats h3 {
+    background: var(--secondary); color: white;
+    padding: 12px 16px; font-size: 14px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sidebar-cats h3 i { color: var(--primary); }
+  .sidebar-cat-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 16px; border-bottom: 1px solid #f1f5f9;
+    text-decoration: none; color: var(--text); font-size: 13px;
+    transition: all 0.15s;
+  }
+  .sidebar-cat-item:hover { background: #fff7ed; color: var(--primary); padding-left: 20px; }
+  .sidebar-cat-item i { font-size: 12px; color: var(--gray); }
+  .sidebar-cat-item:hover i { color: var(--primary); }
+
+  /* BANNER STRIPS */
+  .banner-strip { margin: 16px 0; }
+  .banner-strip-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .strip-banner {
+    border-radius: 10px; padding: 20px 24px;
+    display: flex; align-items: center; gap: 16px;
+    text-decoration: none; color: white;
+    transition: transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .strip-banner:hover { transform: scale(1.02); }
+  .strip1 { background: linear-gradient(135deg, #1a1a2e, #0f4c75); }
+  .strip2 { background: linear-gradient(135deg, #1b1b2f, #162447); }
+  .strip3 { background: linear-gradient(135deg, #1f0000, #3d0000); }
+  .strip-icon { font-size: 36px; flex-shrink: 0; }
+  .strip-text p { font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
+  .strip-text h3 { font-family: 'Rajdhani', sans-serif; font-size: 20px; font-weight: 700; }
+  .strip-text .price { color: var(--primary); font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 700; }
+  .strip-arrow { margin-left: auto; font-size: 20px; opacity: 0.5; }
+
+  /* NEWSLETTER */
+  .newsletter { background: linear-gradient(135deg, var(--dark), var(--secondary)); padding: 40px 0; margin-top: 20px; }
+  .newsletter-inner { text-align: center; }
+  .newsletter h2 { font-family: 'Rajdhani', sans-serif; font-size: 28px; color: white; margin-bottom: 8px; }
+  .newsletter p { color: #94a3b8; margin-bottom: 20px; font-size: 14px; }
+  .newsletter-form { display: flex; max-width: 480px; margin: 0 auto; border-radius: 8px; overflow: hidden; }
+  .newsletter-form input {
+    flex: 1; border: none; outline: none; padding: 13px 18px;
+    font-size: 14px; font-family: 'Hind Siliguri', sans-serif;
+  }
+  .newsletter-form button {
+    background: var(--primary); color: white; border: none;
+    padding: 13px 24px; cursor: pointer; font-weight: 600;
+    font-size: 14px; font-family: 'Hind Siliguri', sans-serif;
+    transition: background 0.2s;
+  }
+  .newsletter-form button:hover { background: var(--primary-dark); }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: #94a3b8; padding: 40px 0 0; }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 32px; padding-bottom: 32px;
+  }
+  .footer-col h4 { color: white; font-size: 15px; font-weight: 600; margin-bottom: 14px; font-family: 'Rajdhani', sans-serif; font-size: 17px; }
+  .footer-col p { font-size: 13px; line-height: 1.7; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; }
+  .footer-col ul li a { color: #94a3b8; text-decoration: none; font-size: 13px; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
+  .footer-col ul li a:hover { color: var(--primary); padding-left: 4px; }
+  .footer-col ul li a i { font-size: 10px; color: var(--primary); }
+  .social-links { display: flex; gap: 10px; margin-top: 16px; }
+  .social-link {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,0.08); color: #94a3b8;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 15px; transition: all 0.2s;
+  }
+  .social-link:hover { background: var(--primary); color: white; }
+  .footer-contact-item { display: flex; gap: 10px; margin-bottom: 12px; }
+  .footer-contact-item i { color: var(--primary); margin-top: 2px; flex-shrink: 0; }
+  .footer-contact-item span { font-size: 13px; line-height: 1.5; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 16px 0; margin-top: 0;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-bottom p { font-size: 12px; }
+  .footer-bottom span { color: var(--primary); }
+  .payment-icons { display: flex; gap: 8px; }
+  .payment-icon {
+    background: rgba(255,255,255,0.1); color: white;
+    padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600;
+  }
+
+  /* SCROLL TOP */
+  .scroll-top {
+    position: fixed; bottom: 24px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--primary); color: white;
+    border: none; cursor: pointer; font-size: 18px;
+    box-shadow: 0 4px 12px rgba(249,115,22,0.4);
+    transition: all 0.2s; z-index: 999;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .scroll-top:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(249,115,22,0.5); }
+
+  /* MOBILE CART TOAST */
+  .cart-toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px);
+    background: var(--secondary); color: white;
+    padding: 12px 24px; border-radius: 30px;
+    font-size: 13px; font-weight: 600; z-index: 1001;
+    transition: transform 0.3s; display: flex; align-items: center; gap: 10px;
+  }
+  .cart-toast.show { transform: translateX(-50%) translateY(0); }
+  .cart-toast i { color: var(--success); }
+
+  .py-4 { padding: 20px 0; }
+  .mt-2 { margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <span><i class="fas fa-map-marker-alt"></i> ঢাকা, বাংলাদেশ থেকে ডেলিভারি</span>
+      <span><i class="fas fa-truck"></i> ৳৫০০+ অর্ডারে ফ্রি শিপিং</span>
+    </div>
+    <div>
+      <a href="#"><i class="fas fa-user-circle"></i> লগইন</a>
+      <a href="#"><i class="fas fa-user-plus"></i> রেজিস্ট্রেশন</a>
+      <a href="#"><i class="fas fa-headset"></i> সাপোর্ট</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-main">
+    <a href="#" class="logo">
+      <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+      <div>
+        <div class="logo-text">Gadget<span>Hub</span></div>
+        <div class="logo-sub">YOUR TECH DESTINATION</div>
+      </div>
+    </a>
+
+    <div class="search-bar">
+      <select class="search-select">
+        <option>সকল ক্যাটাগরি</option>
+        <option>স্মার্টফোন</option>
+        <option>ল্যাপটপ</option>
+        <option>ট্যাবলেট</option>
+        <option>হেডফোন</option>
+        <option>স্মার্টওয়াচ</option>
+        <option>ক্যামেরা</option>
+        <option>গেমিং</option>
+      </select>
+      <input type="text" class="search-input" placeholder="পণ্য খুঁজুন... যেমন iPhone 15, Samsung Galaxy...">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="header-actions">
+      <a href="#" class="action-btn">
+        <i class="fas fa-heart"></i>
+        <span>উইশলিস্ট</span>
+        <div class="badge">3</div>
+      </a>
+      <a href="#" class="action-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span>কার্ট</span>
+        <div class="badge">5</div>
+      </a>
+      <a href="#" class="action-btn">
+        <i class="fas fa-user"></i>
+        <span>অ্যাকাউন্ট</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-all-cats">
+      <i class="fas fa-bars"></i> সকল ক্যাটাগরি
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link"><i class="fas fa-home"></i> হোম</a>
+      <a href="#" class="nav-link hot"><i class="fas fa-fire"></i> ফ্ল্যাশ ডিল</a>
+      <a href="#" class="nav-link new"><i class="fas fa-star"></i> নতুন পণ্য</a>
+      <a href="#" class="nav-link"><i class="fas fa-mobile-alt"></i> স্মার্টফোন</a>
+      <a href="#" class="nav-link"><i class="fas fa-laptop"></i> ল্যাপটপ</a>
+      <a href="#" class="nav-link"><i class="fas fa-headphones"></i> অডিও</a>
+      <a href="#" class="nav-link"><i class="fas fa-gamepad"></i> গেমিং</a>
+      <a href="#" class="nav-link"><i class="fas fa-camera"></i> ক্যামেরা</a>
+      <a href="#" class="nav-link"><i class="fas fa-tag"></i> অফার</a>
+    </div>
+    <div class="nav-hotline">
+      <i class="fas fa-phone-alt"></i>
+      <div>
+        <div style="font-size:11px;">হটলাইন</div>
+        <strong>01972967425</strong>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div style="padding: 0;">
+
+  <!-- HERO -->
+  <div class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-slider" id="slider">
+          <div class="slide active">
+            <div class="slide-badge">🔥 সেরা অফার</div>
+            <h1>iPhone 15 Pro <span>Max</span></h1>
+            <p>টাইটানিয়াম ডিজাইন, A17 Pro চিপ, ৪৮MP ক্যামেরা সিস্টেম</p>
+            <div class="slide-price">
+              মাত্র <strong>৳১,৬৯,৯০০</strong>
+              <del>৳১,৯৯,০০০</del>
+            </div>
+            <div class="slide-actions">
+              <a href="#" class="btn-primary"><i class="fas fa-shopping-cart"></i> এখনই কিনুন</a>
+              <a href="#" class="btn-outline"><i class="fas fa-eye"></i> বিস্তারিত</a>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-badge">🆕 নতুন আগমন</div>
+            <h1>Samsung <span>Galaxy S24</span></h1>
+            <p>Galaxy AI সহ নতুন প্রজন্মের স্মার্টফোন। ২০০MP ক্যামেরা</p>
+            <div class="slide-price">
+              মাত্র <strong>৳১,১৯,৯০০</strong>
+              <del>৳১,৪৫,০০০</del>
+            </div>
+            <div class="slide-actions">
+              <a href="#" class="btn-primary"><i class="fas fa-shopping-cart"></i> এখনই কিনুন</a>
+              <a href="#" class="btn-outline"><i class="fas fa-eye"></i> বিস্তারিত</a>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-badge">💻 সেরা ল্যাপটপ</div>
+            <h1>MacBook <span>Pro M3</span></h1>
+            <p>M3 চিপ সহ অবিশ্বাস্য পারফরম্যান্স। ক্রিয়েটর ও প্রোফেশনালদের জন্য আদর্শ</p>
+            <div class="slide-price">
+              মাত্র <strong>৳২,৪৯,৯০০</strong>
+              <del>৳২,৮৯,০০০</del>
+            </div>
+            <div class="slide-actions">
+              <a href="#" class="btn-primary"><i class="fas fa-shopping-cart"></i> এখনই কিনুন</a>
+              <a href="#" class="btn-outline"><i class="fas fa-eye"></i> বিস্তারিত</a>
+            </div>
+          </div>
+          <div class="slider-dots">
+            <div class="dot active" onclick="goSlide(0)"></div>
+            <div class="dot" onclick="goSlide(1)"></div>
+            <div class="dot" onclick="goSlide(2)"></div>
+          </div>
+          <div class="slider-arrows">
+            <button class="slider-arr" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-arr" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <div class="side-banners">
+          <a href="#" class="side-banner sb1">
+            <div class="side-banner-content">
+              <p>🎧 সেরা অডিও</p>
+              <h3>Sony WH-1000XM5</h3>
+              <div class="price">৳৩৫,৯০০</div>
+            </div>
+          </a>
+          <a href="#" class="side-banner sb2">
+            <div class="side-banner-content">
+              <p>⌚ স্মার্টওয়াচ</p>
+              <h3>Apple Watch Series 9</h3>
+              <div class="price">৳৫৯,৯০০</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="container">
+    <div class="features">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+          <div class="feature-text">
+            <h4>ফ্রি ডেলিভারি</h4>
+            <p>৳৫০০+ অর্ডারে সারা বাংলাদেশে</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="feature-text">
+            <h4>১০০% আসল পণ্য</h4>
+            <p>অফিশিয়াল ওয়ারেন্টি গ্যারান্টেড</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-undo-alt"></i></div>
+          <div class="feature-text">
+            <h4>৭ দিনের রিটার্ন</h4>
+            <p>সহজ রিটার্ন ও রিফান্ড পলিসি</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <div class="feature-text">
+            <h4>২৪/৭ সাপোর্ট</h4>
+            <p>সার্বক্ষণিক কাস্টমার সার্ভিস</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="categories-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>পণ্য ক্যাটাগরি</h2>
+        <a href="#" class="see-all">সব দেখুন <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="cat-grid">
+        <a href="#" class="cat-item"><i class="fas fa-mobile-alt"></i><span>স্মার্টফোন</span></a>
+        <a href="#" class="cat-item"><i class="fas fa-laptop"></i><span>ল্যাপটপ</span></a>
+        <a href="#" class="cat-item"><i class="fas fa-tablet-alt"></i><span>ট্যাবলেট</span></a>
+        <a href="#" class="cat-item"><i class="fas fa-headphones-alt"></i><span>হেডফোন</span></a>
+        <a href="#" class="cat-item"><i class="fas fa-clock"></i><span>স্মার্টওয়াচ</span></a>
+        <a href="#" class="cat-item"><i class="fas fa-camera"></i><span>ক্যামেরা</span></a>
+        <a href="#" class="cat-item"><i class="fas fa-gamepad"></i><span>গেমিং</span></a>
+        <a href="#" class="cat-item"><i class="fas fa-tv"></i><span>টেলিভিশন</span></a>
+        <a href="#" class="cat-item"><i class="fas fa-print"></i><span>প্রিন্টার</span></a>
+        <a href="#" class="cat-item"><i class="fas fa-plug"></i><span>আনুষঙ্গিক</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLASH DEALS -->
+  <div class="flash-section">
+    <div class="container">
+      <div class="flash-header">
+        <div class="flash-title"><i class="fas fa-bolt"></i> ফ্ল্যাশ ডিল</div>
+        <div style="color:#94a3b8; font-size:13px;">অফার শেষ হওয়ার আগেই নিন!</div>
+        <div class="countdown">
+          <div class="countdown-item"><span class="num" id="ch">05</span><span class="lbl">ঘণ্টা</span></div>
+          <div class="countdown-item"><span class="num" id="cm">23</span><span class="lbl">মিনিট</span></div>
+          <div class="countdown-item"><span class="num" id="cs">47</span><span class="lbl">সেকেন্ড</span></div>
+        </div>
+      </div>
+      <div class="flash-body">
+        <div class="flash-grid">
+          <div class="flash-card">
+            <div class="flash-img">📱<div class="flash-disc">-35%</div></div>
+            <div class="flash-info">
+              <div class="name">Redmi Note 13 Pro</div>
+              <div class="price">৳২৮,৯০০</div>
+              <div class="old">৳৪৪,৫০০</div>
+              <div class="progress-bar">
+                <div class="progress-label"><span>বিক্রি হয়েছে 78%</span><span>⚡ মাত্র ৫টি বাকি</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:78%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="flash-card">
+            <div class="flash-img">🎧<div class="flash-disc">-40%</div></div>
+            <div class="flash-info">
+              <div class="name">JBL Live 660NC</div>
+              <div class="price">৳৮,৯০০</div>
+              <div class="old">৳১৪,৯০০</div>
+              <div class="progress-bar">
+                <div class="progress-label"><span>বিক্রি হয়েছে 92%</span><span>⚡ মাত্র ২টি বাকি</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:92%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="flash-card">
+            <div class="flash-img">⌚<div class="flash-disc">-28%</div></div>
+            <div class="flash-info">
+              <div class="name">Amazfit GTR 4</div>
+              <div class="price">৳১৫,৯০০</div>
+              <div class="old">৳২২,০০০</div>
+              <div class="progress-bar">
+                <div class="progress-label"><span>বিক্রি হয়েছে 65%</span><span>⚡ মাত্র ৮টি বাকি</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:65%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="flash-card">
+            <div class="flash-img">💻<div class="flash-disc">-22%</div></div>
+            <div class="flash-info">
+              <div class="name">Xiaomi Pad 6 Tablet</div>
+              <div class="price">৳৩৬,৯০০</div>
+              <div class="old">৳৪৭,৩০০</div>
+              <div class="progress-bar">
+                <div class="progress-label"><span>বিক্রি হয়েছে 45%</span><span>⚡ মাত্র ১২টি বাকি</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:45%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="flash-card">
+            <div class="flash-img">📸<div class="flash-disc">-30%</div></div>
+            <div class="flash-info">
+              <div class="name">GoPro HERO 12 Black</div>
+              <div class="price">৳৪৮,৯০০</div>
+              <div class="old">৳৬৯,৯০০</div>
+              <div class="progress-bar">
+                <div class="progress-label"><span>বিক্রি হয়েছে 55%</span><span>⚡ মাত্র ৭টি বাকি</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:55%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANNER STRIP -->
+  <div class="banner-strip">
+    <div class="container">
+      <div class="banner-strip-grid">
+        <a href="#" class="strip-banner strip1">
+          <div class="strip-icon">📱</div>
+          <div class="strip-text">
+            <p>সেরা বাজেট ফোন</p>
+            <h3>স্মার্টফোন সেল</h3>
+            <div class="price">৳৮,৯৯৯ থেকে শুরু</div>
+          </div>
+          <div class="strip-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+        <a href="#" class="strip-banner strip2">
+          <div class="strip-icon">🎮</div>
+          <div class="strip-text">
+            <p>গেমারদের জন্য</p>
+            <h3>গেমিং গিয়ার</h3>
+            <div class="price">৳৫,৯৯৯ থেকে শুরু</div>
+          </div>
+          <div class="strip-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+        <a href="#" class="strip-banner strip3">
+          <div class="strip-icon">💻</div>
+          <div class="strip-text">
+            <p>স্টুডেন্ট স্পেশাল</p>
+            <h3>ল্যাপটপ অফার</h3>
+            <div class="price">৳৩৫,০০০ থেকে শুরু</div>
+          </div>
+          <div class="strip-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <div class="products-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>আমাদের পণ্য সমূহ</h2>
+        <a href="#" class="see-all">সব দেখুন <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="products-grid">
+
+        <!-- Product 1: Mini DC Motor -->
+        <div class="product-card">
+          <span class="product-badge badge-hot">Hot</span>
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">⚙️</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">Mini DC Motor — ছোট প্রজেক্টের জন্য আদর্শ ডিসি মোটর</div>
+            <div class="product-rating"><div class="stars">★★★★★</div><span class="rating-count">(42)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+        <!-- Product 2: Mini USB Fan -->
+        <div class="product-card">
+          <span class="product-badge badge-new">New</span>
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">🌀</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">Mini USB Fan — USB পাওয়ারড মিনি কুলিং ফ্যান</div>
+            <div class="product-rating"><div class="stars">★★★★☆</div><span class="rating-count">(38)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+        <!-- Product 3: LED -->
+        <div class="product-card">
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">💡</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">LED — বিভিন্ন রঙের লাইট এমিটিং ডায়োড (প্যাক)</div>
+            <div class="product-rating"><div class="stars">★★★★★</div><span class="rating-count">(91)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+        <!-- Product 4: Resistor -->
+        <div class="product-card">
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">🔌</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">Resistor — বিভিন্ন মানের রেজিস্টর সেট (প্যাক)</div>
+            <div class="product-rating"><div class="stars">★★★★★</div><span class="rating-count">(65)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+        <!-- Product 5: Capacitor -->
+        <div class="product-card">
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">🔋</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">Capacitor — ইলেকট্রোলাইটিক ক্যাপাসিটর সেট</div>
+            <div class="product-rating"><div class="stars">★★★★☆</div><span class="rating-count">(53)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+        <!-- Product 6: Transistor -->
+        <div class="product-card">
+          <span class="product-badge badge-sale">অফার</span>
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">⚡</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">Transistor — NPN/PNP ট্রানজিস্টর মিক্স প্যাক</div>
+            <div class="product-rating"><div class="stars">★★★★★</div><span class="rating-count">(47)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+        <!-- Product 7: Breadboard -->
+        <div class="product-card">
+          <span class="product-badge badge-hot">Hot</span>
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">🟦</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">Breadboard — সোল্ডারলেস প্রোটোটাইপিং ব্রেডবোর্ড</div>
+            <div class="product-rating"><div class="stars">★★★★★</div><span class="rating-count">(108)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+        <!-- Product 8: Arduino Board -->
+        <div class="product-card">
+          <span class="product-badge badge-new">New</span>
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">🖥️</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">Arduino Board — Arduino Uno R3 মাইক্রোকন্ট্রোলার বোর্ড</div>
+            <div class="product-rating"><div class="stars">★★★★★</div><span class="rating-count">(134)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+        <!-- Product 9: Battery Holder -->
+        <div class="product-card">
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">🔦</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">Battery Holder — AA/AAA ব্যাটারি হোল্ডার উইথ সুইচ</div>
+            <div class="product-rating"><div class="stars">★★★★☆</div><span class="rating-count">(29)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+        <!-- Product 10: Push Button Switch -->
+        <div class="product-card">
+          <div class="wishlist-btn"><i class="far fa-heart"></i></div>
+          <div class="product-img">🔘</div>
+          <div class="product-actions">
+            <button class="quick-view"><i class="fas fa-eye"></i> Quick View</button>
+            <button class="compare-btn"><i class="fas fa-exchange-alt"></i> Compare</button>
+          </div>
+          <div class="product-info">
+            <div class="product-brand">Gadget Hub</div>
+            <div class="product-name">Push Button Switch — ট্যাকটাইল পুশ বাটন সুইচ সেট</div>
+            <div class="product-rating"><div class="stars">★★★★★</div><span class="rating-count">(76)</span></div>
+            <div class="product-price">
+              <span class="price-current">৳১০০</span>
+            </div>
+            <button class="add-to-cart" onclick="addCart(this)"><i class="fas fa-cart-plus"></i> কার্টে যোগ করুন</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BRANDS -->
+  <div class="brands-section">
+    <div class="container">
+      <div class="section-head">
+        <h2>আমাদের ব্র্যান্ড সমূহ</h2>
+      </div>
+      <div class="brands-grid">
+        <a href="#" class="brand-card">Apple</a>
+        <a href="#" class="brand-card">Samsung</a>
+        <a href="#" class="brand-card">Xiaomi</a>
+        <a href="#" class="brand-card">Sony</a>
+        <a href="#" class="brand-card">Dell</a>
+        <a href="#" class="brand-card">HP</a>
+        <a href="#" class="brand-card">Asus</a>
+        <a href="#" class="brand-card">Lenovo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <h2>📧 নিউজলেটারে সাবস্ক্রাইব করুন</h2>
+        <p>সেরা অফার, নতুন পণ্য ও এক্সক্লুসিভ ডিল সম্পর্কে সবার আগে জানুন</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="আপনার ইমেইল ঠিকানা লিখুন...">
+          <button>সাবস্ক্রাইব করুন</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Gadget Hub</h4>
+          <p>বাংলাদেশের সেরা অনলাইন টেকনোলজি শপ। আমরা আসল পণ্য, সেরা দাম এবং নির্ভরযোগ্য সার্ভিস নিশ্চিত করি।</p>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>১২৩ মিরপুর রোড, ঢাকা - ১২১৬, বাংলাদেশ</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>01972967425</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>arafkhan6989@gmail.com</span>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>দ্রুত লিংক</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right"></i> আমাদের সম্পর্কে</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> যোগাযোগ</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> গোপনীয়তা নীতি</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> ব্যবহারের শর্তাবলী</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> রিটার্ন পলিসি</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> ওয়ারেন্টি নীতি</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> ক্যারিয়ার</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>ক্যাটাগরি</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right"></i> স্মার্টফোন</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> ল্যাপটপ</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> ট্যাবলেট</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> হেডফোন</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> স্মার্টওয়াচ</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> ক্যামেরা</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> গেমিং</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>কাস্টমার সার্ভিস</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-angle-right"></i> আমার অর্ডার</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> ট্র্যাক অর্ডার</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> রিটার্ন রিকোয়েস্ট</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> সার্ভিস সেন্টার</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> FAQ</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> লাইভ চ্যাট</a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i> EMI সুবিধা</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 <span>Gadget Hub</span>. সর্বস্বত্ব সংরক্ষিত। Made with ❤️ in Bangladesh</p>
+        <div class="payment-icons">
+          <div class="payment-icon">bKash</div>
+          <div class="payment-icon">Nagad</div>
+          <div class="payment-icon">VISA</div>
+          <div class="payment-icon">MasterCard</div>
+          <div class="payment-icon">COD</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL TOP -->
+  <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- CART TOAST -->
+  <div class="cart-toast" id="cartToast">
+    <i class="fas fa-check-circle"></i> পণ্যটি কার্টে যোগ হয়েছে!
+  </div>
+</div>
+
+<script>
+  // SLIDER
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function showSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+  function nextSlide() { showSlide(currentSlide + 1); }
+  function prevSlide() { showSlide(currentSlide - 1); }
+  function goSlide(n) { showSlide(n); }
+  setInterval(nextSlide, 5000);
+
+  // COUNTDOWN
+  let total = 5 * 3600 + 23 * 60 + 47;
+  setInterval(() => {
+    if (total <= 0) return;
+    total--;
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    document.getElementById('ch').textContent = String(h).padStart(2, '0');
+    document.getElementById('cm').textContent = String(m).padStart(2, '0');
+    document.getElementById('cs').textContent = String(s).padStart(2, '0');
+  }, 1000);
+
+  // CART
+  let cartCount = 5;
+  function addCart(btn) {
+    cartCount++;
+    document.querySelector('.action-btn .badge').textContent = cartCount;
+    const toast = document.getElementById('cartToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  // WISHLIST
+  document.querySelectorAll('.wishlist-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      const icon = this.querySelector('i');
+      if (this.classList.contains('active')) {
+        icon.className = 'fas fa-heart';
+        this.style.background = '#fee2e2';
+        this.style.color = '#ef4444';
+        this.style.borderColor = '#ef4444';
+      } else {
+        icon.className = 'far fa-heart';
+        this.style.background = 'white';
+        this.style.color = '';
+        this.style.borderColor = '';
+      }
+    });
+  });
+</script>
+</body>
+</html>
